@@ -1,0 +1,668 @@
+#:import Factory kivy.factory.Factory
+WindowManager:
+    MainWindow:
+    DiagnoseWindow:
+
+<MainWindow>:
+    name: "Main"
+    Image:
+        source: "background.jpg"
+        allow_stretch: True
+        keep_ratio: False
+        size_hint: 1,1
+
+    AnchorLayout:
+        size_hint: .600, .200
+        pos: (root.width-self.width)/2,root.height*3/4
+        Label:
+            text: "Chẩn đoán bệnh tiền sản giật"
+            bold: True
+            color : 0, 0, 0, 1
+            font_size: "40dp"
+
+    AnchorLayout:
+        size_hint: .600, .200
+        pos: (root.width-self.width)/2,root.height*2/3
+        Label:
+            text: "cho phụ nữ mang thai"
+            bold: True
+            color : 0, 0, 0, 1
+            font_size: "40dp"
+
+    AnchorLayout:
+        size_hint: .5,.3
+        pos: (root.width-self.width)/2,200
+
+        BoxLayout:
+            orientation: "vertical"
+            spacing: "10dp"
+            Button:
+                text: "Chẩn đoán bệnh"
+                background_color: 102/225,217/225,1,1
+                color : 0, 0, 0, 1
+                font_size: "25dp"
+                background_normal: 'normal.png'
+                background_down: 'down.png'
+                on_release:
+                    app.root.current = "Diagnose"
+                    root.manager.transition.direction = "left"
+            Button:
+                text: "Hướng dẫn"
+                background_color: 102/225,217/225,1,1
+                color : 0, 0, 0, 1
+                font_size: "25dp"
+                background_normal: 'normal.png'
+                background_down: 'down.png'
+                on_release:
+                    Factory.tutorialPopup().open()
+
+            Button:
+                text: "Thoát"
+                background_color: 102/225,217/225,1,1
+                color : 0, 0, 0, 1
+                font_size: "25dp"
+                background_normal: 'normal.png'
+                background_down: 'down.png'
+                border: 30, 30, 30, 30
+                on_press:
+                    quit()
+
+
+<DiagnoseWindow>:
+    name: "Diagnose"
+    Image:
+        source: "background.jpg"
+        allow_stretch: True
+        keep_ratio: False
+        size_hint: 1,1
+
+    AnchorLayout:
+        size_hint: .800, .700
+        pos: (root.width-self.width)/2,100
+        ScrollViewDiagnose:
+            BoxLayout:
+                size_hint:1, None
+                orientation: "vertical"
+                height: 1000
+                BoxLayout:
+                    Label:
+                        text: "1."
+                        size_hint: 0.2,0.2
+                        pos_hint: {"center_y":0.5}
+                        bold: True
+                        font_size: "20dp"
+                        color : 0, 0, 0, 1
+                        halign: 'center'
+                        valign: 'middle'
+                    BoxLayout:
+                        orientation: "vertical"
+                        size_hint: 1,0.5
+                        pos_hint: {"center_y":0.5}
+                        Label:
+                            text:"Chỉ số huyết áp trên"
+                            bold: True
+                            font_size: "20dp"
+                            color : 0, 0, 0, 1
+                            halign: 'center'
+                            valign: 'middle'
+                        Label:
+                            text: "(mmHG)"
+                            color : 0, 0, 0, 1
+                            halign: 'center'
+                            valign: 'middle'
+                    TextInput:
+                        id: x1
+                        input_filter: 'float'
+                        multiline: False
+                        size_hint: 0.3,0.5
+                        pos_hint: {"center_y":0.5}
+                        halign: 'center'
+                        valign: 'middle'
+
+
+                BoxLayout:
+                    Label:
+                        text: "2."
+                        size_hint: 0.2,0.2
+                        pos_hint: {"center_y":0.5}
+                        bold: True
+                        font_size: "20dp"
+                        color : 0, 0, 0, 1
+                        halign: 'center'
+                        valign: 'middle'
+                    BoxLayout:
+                        orientation: "vertical"
+                        size_hint: 1,0.5
+                        pos_hint: {"center_y":0.5}
+                        Label:
+                            text:"Chỉ số huyết áp dưới"
+                            bold: True
+                            font_size: "20dp"
+                            color : 0, 0, 0, 1
+                            halign: 'center'
+                            valign: 'middle'
+                        Label:
+                            text: "(mmHG)"
+                            color : 0, 0, 0, 1
+                            halign: 'center'
+                            valign: 'middle'
+                    TextInput:
+                        id: x2
+                        input_filter: 'float'
+                        multiline: False
+                        size_hint: 0.3,0.5
+                        pos_hint: {"center_y":0.5}
+                        halign: 'center'
+                        valign: 'middle'
+
+                BoxLayout:
+                    Label:
+                        text: "3."
+                        size_hint: 0.2,0.2
+                        pos_hint: {"center_y":0.5}
+                        bold: True
+                        font_size: "20dp"
+                        color : 0, 0, 0, 1
+                        halign: 'center'
+                        valign: 'middle'
+                    BoxLayout:
+                        orientation: "vertical"
+                        size_hint: 1,0.5
+                        pos_hint: {"center_y":0.5}
+                        Label:
+                            text:"Chỉ số HGB"
+                            bold: True
+                            font_size: "20dp"
+                            color : 0, 0, 0, 1
+                            halign: 'center'
+                            valign: 'middle'
+                        Label:
+                            text: "(g/l)"
+                            color : 0, 0, 0, 1
+                            halign: 'center'
+                            valign: 'middle'
+                    TextInput:
+                        id: x3
+                        input_filter: 'float'
+                        multiline: False
+                        size_hint: 0.3,0.5
+                        pos_hint: {"center_y":0.5}
+                        halign: 'center'
+                        valign: 'middle'
+
+
+                BoxLayout:
+                    Label:
+                        text: "4."
+                        size_hint: 0.2,0.2
+                        pos_hint: {"center_y":0.5}
+                        bold: True
+                        font_size: "20dp"
+                        color : 0, 0, 0, 1
+                        halign: 'center'
+                        valign: 'middle'
+                    BoxLayout:
+                        orientation: "vertical"
+                        size_hint: 1,0.5
+                        pos_hint: {"center_y":0.5}
+                        Label:
+                            text:"Chỉ số PLT"
+                            bold: True
+                            font_size: "20dp"
+                            color : 0, 0, 0, 1
+                            halign: 'center'
+                            valign: 'middle'
+                        Label:
+                            text: "(g/l)"
+                            color : 0, 0, 0, 1
+                            halign: 'center'
+                            valign: 'middle'
+                    TextInput:
+                        id: x4
+                        input_filter: 'float'
+                        multiline: False
+                        size_hint: 0.3,0.5
+                        pos_hint: {"center_y":0.5}
+                        halign: 'center'
+                        valign: 'middle'
+
+                BoxLayout:
+                    Label:
+                        text: "5."
+                        size_hint: 0.2,0.2
+                        pos_hint: {"center_y":0.5}
+                        bold: True
+                        font_size: "20dp"
+                        color : 0, 0, 0, 1
+                        halign: 'center'
+                        valign: 'middle'
+                    BoxLayout:
+                        orientation: "vertical"
+                        size_hint: 1,0.5
+                        pos_hint: {"center_y":0.5}
+                        Label:
+                            text:"Chỉ số URE máu"
+                            bold: True
+                            font_size: "20dp"
+                            color : 0, 0, 0, 1
+                            halign: 'center'
+                            valign: 'middle'
+                        Label:
+                            text: "(mmol/l)"
+                            color : 0, 0, 0, 1
+                            halign: 'center'
+                            valign: 'middle'
+                    TextInput:
+                        id: x5
+                        input_filter: 'float'
+                        multiline: False
+                        size_hint: 0.3,0.5
+                        pos_hint: {"center_y":0.5}
+                        halign: 'center'
+                        valign: 'middle'
+
+                BoxLayout:
+                    Label:
+                        text: "6."
+                        size_hint: 0.2,0.2
+                        pos_hint: {"center_y":0.5}
+                        bold: True
+                        font_size: "20dp"
+                        color : 0, 0, 0, 1
+                        halign: 'center'
+                        valign: 'middle'
+                    BoxLayout:
+                        orientation: "vertical"
+                        size_hint: 1,0.5
+                        pos_hint: {"center_y":0.5}
+                        Label:
+                            text:"Chỉ số CREATININ"
+                            bold: True
+                            font_size: "20dp"
+                            color : 0, 0, 0, 1
+                            halign: 'center'
+                            valign: 'middle'
+                        Label:
+                            text: "(µmol/l)"
+                            color : 0, 0, 0, 1
+                            halign: 'center'
+                            valign: 'middle'
+                    TextInput:
+                        id: x6
+                        input_filter: 'float'
+                        multiline: False
+                        size_hint: 0.3,0.5
+                        pos_hint: {"center_y":0.5}
+                        halign: 'center'
+                        valign: 'middle'
+
+                BoxLayout:
+                    Label:
+                        text: "7."
+                        size_hint: 0.2,0.2
+                        pos_hint: {"center_y":0.5}
+                        bold: True
+                        font_size: "20dp"
+                        color : 0, 0, 0, 1
+                        halign: 'center'
+                        valign: 'middle'
+                    BoxLayout:
+                        orientation: "vertical"
+                        size_hint: 1,0.5
+                        pos_hint: {"center_y":0.5}
+                        Label:
+                            text:"Chỉ số ACID URIC"
+                            bold: True
+                            font_size: "20dp"
+                            color : 0, 0, 0, 1
+                            halign: 'center'
+                            valign: 'middle'
+                        Label:
+                            text: "(µmol/l)"
+                            color : 0, 0, 0, 1
+                            halign: 'center'
+                            valign: 'middle'
+                    TextInput:
+                        id: x7
+                        input_filter: 'float'
+                        multiline: False
+                        size_hint: 0.3,0.5
+                        pos_hint: {"center_y":0.5}
+                        halign: 'center'
+                        valign: 'middle'
+
+                BoxLayout:
+                    Label:
+                        text: "8."
+                        size_hint: 0.2,0.2
+                        pos_hint: {"center_y":0.5}
+                        bold: True
+                        font_size: "20dp"
+                        color : 0, 0, 0, 1
+                        halign: 'center'
+                        valign: 'middle'
+                    BoxLayout:
+                        orientation: "vertical"
+                        size_hint: 1,0.5
+                        pos_hint: {"center_y":0.5}
+                        Label:
+                            text:"Chỉ số ALT"
+                            bold: True
+                            font_size: "20dp"
+                            color : 0, 0, 0, 1
+                            halign: 'center'
+                            valign: 'middle'
+                        Label:
+                            text: "(UI/l)"
+                            color : 0, 0, 0, 1
+                            halign: 'center'
+                            valign: 'middle'
+                    TextInput:
+                        id: x8
+                        input_filter: 'float'
+                        multiline: False
+                        size_hint: 0.3,0.5
+                        pos_hint: {"center_y":0.5}
+                        halign: 'center'
+                        valign: 'middle'
+
+                BoxLayout:
+                    Label:
+                        text: "9."
+                        size_hint: 0.2,0.2
+                        pos_hint: {"center_y":0.5}
+                        bold: True
+                        font_size: "20dp"
+                        color : 0, 0, 0, 1
+                        halign: 'center'
+                        valign: 'middle'
+                    BoxLayout:
+                        orientation: "vertical"
+                        size_hint: 1,0.5
+                        pos_hint: {"center_y":0.5}
+                        Label:
+                            text:"Chỉ số AST"
+                            bold: True
+                            font_size: "20dp"
+                            color : 0, 0, 0, 1
+                            halign: 'center'
+                            valign: 'middle'
+                        Label:
+                            text: "(UI/l)"
+                            color : 0, 0, 0, 1
+                            halign: 'center'
+                            valign: 'middle'
+                    TextInput:
+                        id: x9
+                        input_filter: 'float'
+                        multiline: False
+                        size_hint: 0.3,0.5
+                        pos_hint: {"center_y":0.5}
+                        halign: 'center'
+                        valign: 'middle'
+
+                BoxLayout:
+                    Label:
+                        text: "10."
+                        size_hint: 0.2,0.2
+                        pos_hint: {"center_y":0.5}
+                        bold: True
+                        font_size: "20dp"
+                        color : 0, 0, 0, 1
+                        halign: 'center'
+                        valign: 'middle'
+                    BoxLayout:
+                        orientation: "vertical"
+                        size_hint: 1,0.5
+                        pos_hint: {"center_y":0.5}
+                        Label:
+                            text:"Chỉ số Protein toàn phần"
+                            bold: True
+                            font_size: "20dp"
+                            color : 0, 0, 0, 1
+                            halign: 'center'
+                            valign: 'middle'
+                        Label:
+                            text: "(g/l)"
+                            color : 0, 0, 0, 1
+                            halign: 'center'
+                            valign: 'middle'
+                    TextInput:
+                        id: x10
+                        input_filter: 'float'
+                        multiline: False
+                        size_hint: 0.3,0.5
+                        pos_hint: {"center_y":0.5}
+                        halign: 'center'
+                        valign: 'middle'
+
+
+                BoxLayout:
+                    Label:
+                        text: "11."
+                        size_hint: 0.2,0.2
+                        pos_hint: {"center_y":0.5}
+                        bold: True
+                        font_size: "20dp"
+                        color : 0, 0, 0, 1
+                        halign: 'center'
+                        valign: 'middle'
+                    BoxLayout:
+                        orientation: "vertical"
+                        size_hint: 1,0.5
+                        pos_hint: {"center_y":0.5}
+                        Label:
+                            text:"Chỉ số ALBUMIN"
+                            bold: True
+                            font_size: "20dp"
+                            color : 0, 0, 0, 1
+                            halign: 'center'
+                            valign: 'middle'
+                        Label:
+                            text: "(g/l)"
+                            color : 0, 0, 0, 1
+                            halign: 'center'
+                            valign: 'middle'
+                    TextInput:
+                        id: x11
+                        input_filter: 'float'
+                        multiline: False
+                        size_hint: 0.3,0.5
+                        pos_hint: {"center_y":0.5}
+                        halign: 'center'
+                        valign: 'middle'
+
+                BoxLayout:
+                    Label:
+                        text: "12."
+                        size_hint: 0.2,0.2
+                        pos_hint: {"center_y":0.5}
+                        bold: True
+                        font_size: "20dp"
+                        color : 0, 0, 0, 1
+                        halign: 'center'
+                        valign: 'middle'
+                    BoxLayout:
+                        orientation: "vertical"
+                        size_hint: 1,0.5
+                        pos_hint: {"center_y":0.5}
+                        Label:
+                            text:"Chỉ số LDH"
+                            bold: True
+                            font_size: "20dp"
+                            color : 0, 0, 0, 1
+                            halign: 'center'
+                            valign: 'middle'
+                        Label:
+                            text: "(U/l)"
+                            color : 0, 0, 0, 1
+                            halign: 'center'
+                            valign: 'middle'
+                    TextInput:
+                        id: x12
+                        input_filter: 'float'
+                        multiline: False
+                        size_hint: 0.3,0.5
+                        pos_hint: {"center_y":0.5}
+                        halign: 'center'
+                        valign: 'middle'
+
+
+                BoxLayout:
+                    Label:
+                        text: "13."
+                        size_hint: 0.2,0.2
+                        pos_hint: {"center_y":0.5}
+                        bold: True
+                        font_size: "20dp"
+                        color : 0, 0, 0, 1
+                        halign: 'center'
+                        valign: 'middle'
+                    BoxLayout:
+                        orientation: "vertical"
+                        size_hint: 1,0.5
+                        pos_hint: {"center_y":0.5}
+                        Label:
+                            text:"Chỉ số Protein niệu"
+                            bold: True
+                            font_size: "20dp"
+                            color : 0, 0, 0, 1
+                            halign: 'center'
+                            valign: 'middle'
+                        Label:
+                            text: "(g/l)"
+                            color : 0, 0, 0, 1
+                            halign: 'center'
+                            valign: 'middle'
+                    TextInput:
+                        id: x13
+                        input_filter: 'float'
+                        multiline: False
+                        size_hint: 0.3,0.5
+                        pos_hint: {"center_y":0.5}
+                        halign: 'center'
+                        valign: 'middle'
+
+    Button:
+        text:"TIẾN HÀNH CHẨN ĐOÁN"
+        bold: True
+        size_hint: 0.5, 0.05
+        pos: (root.width-self.width)/2, 0
+        disabled: True
+        disabled: False if x1.text != '' and x2.text!= '' and x3.text!= '' and x4.text!= '' and x5.text!= '' and x6.text!= ''  and x7.text!= '' and x8.text!= '' and x9.text!= '' and x10.text!= '' and x11.text != '' and x12.text!= '' and x13.text!= ''else True
+        on_release:
+            root.on_click(x1.text, x2.text, x3.text, x4.text, x5.text, x6.text, x7.text, x8.text, x9.text, x10.text, x11.text, x12.text, x13.text)
+            Factory.ResultPopup().open()
+
+    Button:
+        text: "MENU"
+        bold: True
+        size_hint: 0.15,0.05
+        pos: root.width-self.width,root.height-self.height
+        on_release:
+            app.root.current = "Main"
+            root.manager.transition.direction = "right"
+            x1.text = ''
+            x2.text= ''
+            x3.text= ''
+            x4.text= ''
+            x5.text= ''
+            x6.text= ''
+            x7.text= ''
+            x8.text= ''
+            x9.text= ''
+            x10.text= ''
+            x11.text = ''
+            x12.text= ''
+            x13.text= ''
+
+
+    AnchorLayout:
+        size_hint: .600, .200
+        pos: (root.width-self.width)/2,root.height*5/6
+        Label:
+            text: "Vui lòng nhập các kết quả xét nghiệm dưới đây"
+            bold: True
+            color : 0, 0, 0, 1
+            font_size: "25dp"
+
+    AnchorLayout:
+        size_hint: .600, .200
+        pos: (root.width-self.width)/2,root.height*4.7/6
+        Label:
+            text: "để tiến hành chẩn đoán"
+            bold: True
+            color : 0, 0, 0, 1
+            font_size: "25dp"
+
+
+<ResultPopup>:
+    auto_dismiss: True
+    size_hint: 0.6, 0.6
+    title: "Kết quả chẩn đoán"
+    title_align: 'center'
+    BoxLayout:
+        orientation: "vertical"
+        Label:
+            text: root.diagnoseResult
+
+        Button:
+            text:"Đóng"
+            bold: True
+            size_hint: 0.2, 0.07
+            pos_hint: {"center_x": .5}
+            on_release:
+                root.dismiss()
+
+
+<tutorialPopup>:
+    auto_dismiss: True
+    size_hint: .8, .8
+    title: "Hướng dẫn"
+    title_align: "center"
+    BoxLayout:
+        orientation: "vertical"
+        ScrollViewTutorial:
+            BoxLayout:
+                size_hint: 1, None
+                orientation: "vertical"
+                height: 2000
+                BoxLayout:
+                    orientation: "vertical"
+                    Label:
+                        text: "Sử dụng ứng dụng để chẩn đoán,\nngười dùng tiến hành theo các bước sau\nBước 1: Nhấn vào nút \"Chẩn đoán bệnh\" trên màn hình chính"
+                        size_hint: 1, 0.1
+                        halign: 'left'
+                        valign: 'middle'
+                    Image:
+                        source: "main.jpg"
+                        allow_stretch: True
+                        keep_ratio: False
+                        size_hint: .8,.6
+
+                    Label:
+                        text: "Ứng dụng sẽ chuyển hướng sang màn hình chẩn đoán\ncó giao diện như sau\nBước 2: Nhập các kết quả xét nghiệm vào các ô tương ứng\nsau đó nhấn \"Tiến hành chẩn đoán\""
+                        size_hint: 1, 0.1
+                    Image:
+                        source: "diagnose.jpg"
+                        allow_stretch: True
+                        keep_ratio: False
+                        size_hint: .8,.6
+
+
+                    Label:
+                        text: "Kết quả chẩn đoán của người dùng sẽ được hiển thị ngay\ntrên màn hình"
+                        size_hint: 1, 0.05
+                    Image:
+                        source: "popup.jpg"
+                        allow_stretch: True
+                        keep_ratio: False
+                        size_hint: .8,.6
+
+        Button:
+            text:"Đóng"
+            bold: True
+            size_hint: 0.2, 0.07
+            pos_hint: {"center_x": .5}
+            on_release:
+                root.dismiss()
